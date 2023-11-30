@@ -361,13 +361,12 @@ export default {
     },
     fetchData(prompt) {
       console.log(prompt)
-      // const url = 'http://8.134.196.1:5000/image/generations';
-      const url = 'http://127.0.0.1:5000/image/generations';
+      const url = process.env.MODEL_SERVER_URL;
       const data = {
-        'n': 1,
+        'n': process.env.MODEL_N,
         'prompt': prompt,
-        'size': '768x768',
-        'steps': 25
+        'size': process.env.MODEL_SIZE,
+        'steps': process.env.MODEL_STEPS
       };
 
       var cookie = document.cookie;
@@ -398,7 +397,7 @@ export default {
   width: calc(100% - 100px);
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid #ffffff;
+  border: 0px solid #ffffff;
 
   .img {
     width: 100%;
